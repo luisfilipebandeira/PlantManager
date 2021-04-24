@@ -16,12 +16,14 @@ import { pt } from 'date-fns/locale'
 import fontes from '../styles/fontes'
 import { PlantCardSecondary } from '../Components/PlantCardSecondary'
 import { Load } from '../Components/Load'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/core'
 
 export function MyPlants(){
     const [myPlants, setMyPlants] = useState<plantProps[]>([])
     const [loading, setLoading] = useState(true)
     const [nextWaterd, setNextWaterd] = useState<string>()
+
+    const navigation = useNavigation()
 
     function handleRemove(plant: plantProps){
         Alert.alert('Remover', `Deseja remover a ${plant.name}?`, [
@@ -44,6 +46,10 @@ export function MyPlants(){
                 }
             }
         ])
+    }
+
+    function handlePlanctSelect(plant: plantProps){
+        navigation.navigate('PlantSave', { plant })
     }
 
     useEffect(() => {
@@ -88,7 +94,7 @@ export function MyPlants(){
                     data={myPlants}
                     keyExtractor={(item) => String(item.id)}
                     renderItem={({item}) => (
-                        <PlantCardSecondary data={item} handleRemove={() => {handleRemove(item)}} />
+                        <PlantCardSecondary data={item} onPress={() => handlePlanctSelect(item)} handleRemove={() => {handleRemove(item)}} />
                     )}
                     showsVerticalScrollIndicator={false}
                 />
