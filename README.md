@@ -10,7 +10,9 @@
   <a href="#a-desenvolver">A desenvolver</a>
 </p>
 
-![](https://github.com/razevedocosta/nlw05-plantmanager/blob/main/assets/preview.png)
+<p align="center">
+  <img alt="Telas" src=".expo-shared/preview.png" width="100%">
+</p>
 
 **Link figma:** https://www.figma.com/file/IhQRtrOZdu3TrvkPYREzOy/PlantManager/duplicate?node-id=0%3A1
 
